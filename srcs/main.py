@@ -2,7 +2,9 @@ from rdflib import Graph, Literal, BNode, RDF, Namespace
 from rdflib.namespace import FOAF
 from parse_file import *
 
-print(file[0])
+# Don't take Hospital [2]
+
+print(file[1])
 
 store = Graph()
 
