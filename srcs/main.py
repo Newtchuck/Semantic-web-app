@@ -21,7 +21,12 @@ for count, line in enumerate(file, start=0):
     store.add((hospital, DBPEDIA_OWL["type"], Literal(line[3])))
     store.add((hospital, DBPEDIA_OWL["department"], Literal(line[4])))
     store.add((hospital, DBPEDIA_OWL["Organisation"], Literal(line[7])))
-    store.add((hospital, DBPEDIA_OWL["address"], Literal(line[8])))
+    if len(line[8]) != 0:
+        store.add((hospital, DBPEDIA_OWL["address"], Literal(line[8])))
+    elif len(line[9]) != 0:
+        store.add((hospital, DBPEDIA_OWL["address"], Literal(line[9])))
+    elif len(line[10]) != 0:
+        store.add((hospital, DBPEDIA_OWL["address"], Literal(line[10])))
     store.add((hospital, DBPEDIA_OWL["city"], Literal(line[11])))
     store.add((hospital, DBPEDIA_OWL["county"], Literal(line[12])))
     store.add((hospital, DBPEDIA_OWL["postalCode"], Literal(line[13])))
@@ -32,5 +37,3 @@ for count, line in enumerate(file, start=0):
     store.add((hospital, DBPEDIA_OWL["Website"], Literal(line[20])))
 
 store.serialize("hospital_foaf.rdf", format="pretty-xml", max_depth=3)
-
-print(store.serialize(format="turtle"))
