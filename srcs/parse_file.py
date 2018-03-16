@@ -3,5 +3,6 @@ import csv
 file = []
 with open('../resources/Hospital.csv', 'rb') as csvfile:
     reader = csv.reader(csvfile, delimiter='\t')
-    for row in reader:
-        file.append(row)
+    for count, row in enumerate(reader, start=0):
+        #if count != 0:
+            file.append(row)

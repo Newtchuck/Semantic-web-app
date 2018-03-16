@@ -1,5 +1,7 @@
 **Vocabulary choices**
 
+* dbpedia-owl:Hospital
+
 * OrganisationID -> dbpedia-owl:id
 * OrganisationCode -> dbpedia-owl:code
 * SubType ->  dbpedia-owl:type (rdf:type)
@@ -17,7 +19,6 @@
 * Phone -> foaf:phone
 * Website -> dbpedia-owl:Website
 * Email -> vcard:email
-* Fax -> vcard:Fax
 
 
 **Namespaces**
