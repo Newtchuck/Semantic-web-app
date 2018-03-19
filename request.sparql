@@ -22,5 +22,6 @@ SELECT ?id ?code ?type ?department ?name ?address ?city ?county ?postalCode ?lon
             ?Org foaf:homepage ?website .
       			?Org foaf:phone ?phone
 			}
+  FILTER (?code="5P603")
 		}
 ORDER BY asc(?code)
