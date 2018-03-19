@@ -27,3 +27,14 @@
 * DBPEDIA-OWL
 * FOAF
 * VCARD
+
+shop	pharmacy	http://www.w3.org/1999/02/22-rdf-syntax-ns#type	http://linkedgeodata.org/ontology/Pharmacy
+
+SELECT ?name ?pgeo
+WHERE
+{
+  <Hospital url> geo:geometry ?geo .
+  ?p a <http://linkedgeodata.org/ontology/Pharmacy> .
+  ?p geo:geometry ?pgeo
+  FILTER(bif:st_intersects(?geo, ?pgeo, 5))
+}

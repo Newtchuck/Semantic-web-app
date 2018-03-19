@@ -1,0 +1,16 @@
+PREFIX ngw
+PREFIX schema
+PREFIX foaf
+PREFIX dbo
+
+
+SELECT ?Code ?Name ?Contact_mail ?Contact_phone
+WHERE {
+  ?Org schema:organisation .
+  ?Org ngw:organisationCode ?Code .
+  ?Org dbo:name ?Name .
+  OPTIONNAL {
+    ?Org foaf:mail ?Contact_mail
+    ?Org foaf:phone ?ContactPhone
+  }
+}

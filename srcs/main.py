@@ -19,7 +19,7 @@ for count, line in enumerate(file, start=0):
     store.add((hospital, RDF.type, SCHEMA.Organisation))
     store.add((hospital, DBPEDIA_OWL["id"], Literal(line[0])))
     store.add((hospital, DBPEDIA_OWL["code"], Literal(line[1])))
-    store.add((hospital, DBPEDIA_OWL["type"], Literal(line[3])))
+	    store.add((hospital, DBPEDIA_OWL["type"], Literal(line[3])))
     store.add((hospital, DBPEDIA_OWL["department"], Literal(line[4])))
     store.add((hospital, DBPEDIA_OWL["name"], Literal(line[7])))
     if len(line[8]) != 0:
