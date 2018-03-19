@@ -3,9 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run updateit && node ./bin/www",
-    "doless": "lessc ./public/stylesheets/style.less ./public/static/style.css",
-    "updateit": "npm install"
+    "start": "node ./bin/www",
   },
   "dependencies": {
     "body-parser": "*",
