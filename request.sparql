@@ -25,3 +25,14 @@ SELECT ?id ?code ?type ?department ?name ?address ?city ?county ?postalCode ?lon
   FILTER (?code="5P603")
 		}
 ORDER BY asc(?code)
+
+
+
+SELECT ?name ?pgeo
+WHERE
+{
+  <Hospital url> geo:geometry ?geo .
+  ?p a <http://linkedgeodata.org/ontology/Pharmacy> .
+  ?p geo:geometry ?pgeo
+  FILTER(bif:st_intersects(?geo, ?pgeo, 5))
+}
