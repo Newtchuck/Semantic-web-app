@@ -5,12 +5,12 @@ from parse_file import *
 store = Graph()
 
 #Import namespaces
-DBPEDIA_OWL = Namespace("http://dbpedia-owl/ontology/")
+DBPEDIA_OWL = Namespace("http://dbpedia.org/ontology/")
 VCARD = Namespace("http://www.w3.org/2006/vcard/")
 
 # Bind a few prefix, namespace pairs
 store.bind("foaf", FOAF)
-store.bind("dbpedia-owl", DBPEDIA_OWL)
+store.bind("dbpedia", DBPEDIA_OWL)
 store.bind("vcard", VCARD)
 
 for count, line in enumerate(file, start=0):
@@ -18,7 +18,7 @@ for count, line in enumerate(file, start=0):
     store.add((hospital, RDF.type, DBPEDIA_OWL["Hospital"]))
     store.add((hospital, DBPEDIA_OWL["id"], Literal(line[0])))
     store.add((hospital, DBPEDIA_OWL["code"], Literal(line[1])))
-    store.add((hospital, DBPEDIA_OWL["type"], Literal(line[3])))
+	    store.add((hospital, DBPEDIA_OWL["type"], Literal(line[3])))
     store.add((hospital, DBPEDIA_OWL["department"], Literal(line[4])))
     store.add((hospital, DBPEDIA_OWL["Organisation"], Literal(line[7])))
     if len(line[8]) != 0:
