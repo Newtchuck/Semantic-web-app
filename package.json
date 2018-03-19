@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run updateit && npm run doless && node ./bin/www",
+    "start": "npm run updateit && node ./bin/www",
     "doless": "lessc ./public/stylesheets/style.less ./public/static/style.css",
     "updateit": "npm install"
   },
