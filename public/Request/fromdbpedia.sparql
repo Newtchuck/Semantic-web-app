@@ -1,0 +1,9 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT ?hospital ?abstract
+WHERE {
+    ?hospital a <http://dbpedia.org/ontology/Hospital> .
+    ?hospital dbo:abstract ?abstract
+    FILTER( lang( ?abstract ) = "en" )
+}
+LIMIT(20)

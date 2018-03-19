@@ -1,0 +1,27 @@
+PREFIX ngw: <local:ngwproject:>
+PREFIX schema: <http://schema.org/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX geo: <https://www.w3.org/2003/01/geo/>
+
+SELECT ?id ?code ?type ?department ?name ?address ?city ?county ?postalCode ?longitude ?latitude ?email ?website ?phone WHERE {
+  ?Org a schema:Organisation .
+  ?Org dbo:id ?id .
+  ?Org dbo:code ?code .
+  ?Org dbo:type ?type .
+  ?Org dbo:department ?department .
+  ?Org dbo:name ?name .
+  ?Org dbo:address ?address .
+  ?Org dbo:city ?city .
+  ?Org dbo:county ?county .
+  ?Org dbo:postalCode ?postalCode
+	OPTIONAL {
+      			?Org geo:long ?longitude .
+      			?Org geo:lat ?latitude .
+				    ?Org foaf:email ?email .
+            ?Org foaf:homepage ?website .
+      			?Org foaf:phone ?phone
+			}
+  FILTER (?code="5P603")
+		}
+ORDER BY asc(?code)
