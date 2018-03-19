@@ -1,7 +1,24 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    block head
+      block title
+        title Next Generation Web Application
+      block meta
+        meta(name='description', content='')
+        meta(name='keywords', content='')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='/stylesheets/material.min.css')
+        link(rel='stylesheet', href="/static/style.css")
+        link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
   body
-    block content
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      include header
+
+      main.mdl-layout__content
+        block content
+
+        include footer
+
+  script(src="/javascripts/cards.js")

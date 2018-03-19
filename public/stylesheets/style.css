@@ -1,8 +1,6 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.mdl-navigation__link:hover {
+  background-color: #104ac9;
 }
-
-a {
-  color: #00B7FF;
+.mdl-mini-footer__link-list li a:hover {
+  color: #bbb;
 }

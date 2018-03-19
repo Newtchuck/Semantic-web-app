@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    .mdl-grid
+        .mdl-cell.mdl-cell--12-col
+            h1 #{title}
+            div.container
+                div.list
+                    for item in results
+                        div.card.ripple= item
