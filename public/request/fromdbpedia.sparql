@@ -1,0 +1,28 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX geo: <https://www.w3.org/2003/01/geo/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dbp: <http://dbpedia.org/property/>
+
+SELECT *
+WHERE {
+    ?hospital a <http://dbpedia.org/ontology/Hospital> .
+    ?hospital dbo:abstract ?abstract .
+    ?hospital dbo:thumbnail ?tn .
+    ?hospital dbp:caption ?caption .
+    ?hospital dbo:bedCount ?bed .
+    ?hospital dbp:healthcare ?hc .
+    ?hospital dbp:type ?type .
+    ?hospital geo:geometry ?geo .
+    ?hospital geo:lat ?lat .
+    ?hospital geo:long ?long .
+    ?hospital dbp:location ?location .
+    OPTIONAL { ?hospital dbo:address ?ad . }
+    OPTIONAL { ?hospital foaf:homepage ?page . }
+    ?hospital dbo:country ?country .
+    FILTER( lang( ?abstract ) = "en" ) .
+    FILTER(?country = <http://dbpedia.org/resource/Scotland>
+    || ?country = <http://dbpedia.org/resource/England>
+    || ?country = <http://dbpedia.org/resource/United_Kingdom>
+    || ?country = <http://dbpedia.org/resource/Wales>
+    || ?country = <http://dbpedia.org/resource/Northern_Ireland>)
+}
