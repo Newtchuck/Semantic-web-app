@@ -1,6 +1,6 @@
 PREFIX bif: <http://www.openlinksw.com/schemas/bif>
 
-SELECT ?name ?pgeo
+SELECT ?pgeo
 WHERE
 {
   <http://dbpedia.org/page/North_Devon_District_Hospital> geo:geometry ?geo .

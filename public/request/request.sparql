@@ -14,7 +14,7 @@ SELECT ?id ?code ?type ?department ?name ?address ?city ?county ?postalCode ?lon
   ?Org dbo:address ?address .
   ?Org dbo:city ?city .
   ?Org dbo:county ?county .
-  ?Org dbo:postalCode ?postalCode
+  ?Org dbo:postalCode ?postalCode .
 	OPTIONAL {
       			?Org geo:long ?longitude .
       			?Org geo:lat ?latitude .

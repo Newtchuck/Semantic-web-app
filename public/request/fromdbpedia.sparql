@@ -7,17 +7,18 @@ SELECT *
 WHERE {
     ?hospital a <http://dbpedia.org/ontology/Hospital> .
     ?hospital dbo:abstract ?abstract .
-    ?hospital dbo:thumbnail ?tn .
-    ?hospital dbp:caption ?caption .
-    ?hospital dbo:bedCount ?bed .
-    ?hospital dbp:healthcare ?hc .
-    ?hospital dbp:type ?type .
-    ?hospital geo:geometry ?geo .
-    ?hospital geo:lat ?lat .
-    ?hospital geo:long ?long .
-    ?hospital dbp:location ?location .
+    OPTIONAL { ?hospital dbo:thumbnail ?tn .
+    ?hospital dbp:caption ?caption . }
+    OPTIONAL {?hospital dbo:bedCount ?bed .}
+
     OPTIONAL { ?hospital dbo:address ?ad . }
     OPTIONAL { ?hospital foaf:homepage ?page . }
+    OPTIONAL { ?hospital geo:geometry ?geo .
+    ?hospital geo:lat ?lat .
+    ?hospital geo:long ?long . }
+    OPTIONAL { ?hospital dbp:location ?location . }
+    OPTIONAL { ?hospital dbp:healthcare ?hc .
+    ?hospital dbp:type ?type . }
     ?hospital dbo:country ?country .
     FILTER( lang( ?abstract ) = "en" ) .
     FILTER(?country = <http://dbpedia.org/resource/Scotland>
