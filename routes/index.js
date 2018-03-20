@@ -23,7 +23,7 @@ exports.index = function(req, res) {
 		"ORDER BY asc(?Code)")
 	     .then(({ body }) => {
 		     const results = body.results.bindings;
-		     res.render('index', {title: "List of hospitals", results: results});
+		     res.render('index', {title: "List of hospitals from the U.K.", results: results});
 	     });
 
 };

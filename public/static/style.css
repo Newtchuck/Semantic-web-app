@@ -7,6 +7,22 @@
 body {
   background: #efefef;
 }
+.nostyle {
+  text-decoration: none;
+}
+.mybutton {
+  display: none;
+}
+.mytitle {
+  text-align: center;
+}
+.myfooter {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+}
 .list {
   margin: 30px auto;
   max-width: 720px;
