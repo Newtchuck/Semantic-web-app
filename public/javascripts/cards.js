@@ -25,13 +25,17 @@ $(document).ready(function() {
 
 	var card = $('.list .card');
 	card.click(function() {
+		let button = $(this.children[4])[0];
+		console.log(button);
 		var c = $(this);
 		if (c.hasClass('active')) {
 			card.removeClass('active');
+			button.style.display = "none";
 		}
 		else {
 			card.removeClass('active');
 			c.addClass('active');
+			button.style.display = "flex";
 		}
 	});
 });

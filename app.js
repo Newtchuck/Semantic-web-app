@@ -37,22 +37,31 @@ if (app.get('env') === 'development') {
 }
 
 app.get('/', function(req, res) {
+	let seen = {};
 	query.execute(link,
 		"semantic-wep-app",
-		"PREFIX ngw: <local:ngwproject:> PREFIX schema: <http://schema.org/> PREFIX dbo: <http://dbpedia.org/ontology/> PREFIX foaf: <http://xmlns.com/foaf/0.1/>" +
+		"PREFIX schema: <http://schema.org/> PREFIX dbo: <http://dbpedia.org/ontology/> PREFIX foaf: <http://xmlns.com/foaf/0.1/>" +
 		"SELECT ?code ?county ?email ?website WHERE {" +
 			"?Org a schema:Organisation ." +
 			"?Org dbo:code ?code ." +
 			"?Org dbo:county ?county ." +
 			"OPTIONAL {" +
-				"?Org vcard:email ?email ." +
-				"?Org dbo:website ?website" +
+				"?Org dbo:email ?email ." +
+				"?Org foaf:homepage ?website" +
 			"}" +
 		"}" +
 		"ORDER BY asc(?code)")
 		.then(({ body }) => {
-	     	console.log(body);
-	     	const results = body.results.bindings;
+			const epurate = body.results.bindings.filter(function(currentObject) {
+				if (currentObject.name in seen) {
+					return false;
+				} else {
+					seen[currentObject.code] = true;
+					return true;
+				}
+			});
+			console.log(epurate);
+	     	const results = epurate;
 	     	res.render('index', {title: "List of hospitals", results: results});
 	     });
 
