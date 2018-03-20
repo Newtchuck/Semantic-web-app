@@ -1,0 +1,30 @@
+extends layout
+-var unknown="(value not found)"
+
+block content
+    .mdl-grid
+        .mdl-cell.mdl-cell--12-col
+            h1.mytitle #{title + " " + result.name.value}
+            div.containerCard
+                    div.card.ripple.mdl-card__title
+                        h5.mdl-card__title= "Name:" + (result.name.value !== "" ? result.name.value : unknown)
+                        p.mdl-card__supporting-text= "Code:" + (result.code !== "" ? result.code.value : unknown)
+                        p.mdl-card__supporting-text= "ID: " + (result.id  !== "" ? result.id.value : unknown)
+                        p.mdl-card__supporting-text= "Name: " + (result.name !== "" ? result.name.value : unknown)
+                        p.mdl-card__supporting-text= "Department: " + (result.department !== "" ? result.department.value : unknown)
+                        p.mdl-card__supporting-text= "City:" + (result.city !== "" ? result.city.value : unknown)
+                        p.mdl-card__supporting-text= "Mail: " + (result.mail !== "" ? result.mail.value : unknown)
+                        p.mdl-card__supporting-text= "Phone: " + (result.phone !== "" ? result.phone.value : unknown)
+                        p.mdl-card__supporting-text= "Website: " + (result.website !== "" ? result.website.value : unknown)
+                        p.mdl-card__supporting-text= "PostCode: " + (result.addrcode !== "" ? result.addrcode.value : unknown)
+                        p.mdl-card__supporting-text= "County:" + (result.addrcounty !== "" ? result.addrcounty.value : unknown)
+                        p.mdl-card__supporting-text= "Lat: " + (result.geolat !== "" ? result.geolat.value : unknown)
+                        p.mdl-card__supporting-text= "Lon: " + (result.geolon !== "" ? result.geolon.value : unknown)
+                    div.card.ripple.mdl-card__title
+                        h5.mdl-card__title= "More data from dbpedia: " + (dbpedia !== "empty" ? "Available" : "Unknown")
+                        if (dbpedia !== "empty")
+                            span= "Abstract:" + (dbpedia.abstract !== "" ? dbpedia.abstract.value : unknown)
+                            span= "Beds:" + (dbpedia.bed !== "" ? dbpedia.bed.value : unknown)
+                            span= "Page:" + (dbpedia.page !== "" ? dbpedia.page.value : unknown)
+
+
