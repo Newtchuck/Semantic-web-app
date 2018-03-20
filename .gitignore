@@ -99,7 +99,3 @@ ENV/
 
 # mypy
 .mypy_cache/
-
-yarn.lock
-
-node_modules
