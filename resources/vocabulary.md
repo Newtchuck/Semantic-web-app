@@ -7,18 +7,18 @@
 * SubType ->  dbpedia-owl:type (rdf:type)
 * Sector -> dbpedia-owl:department
 
-* OrganisationName -> dbpedia-owl:Organisation
+* OrganisationName -> dbpedia-owl:name
 * Address -> dbpedia-owl:address
 
 * City -> dbpedia-owl:city
 * County -> dbpedia-owl:county
 * Postcode -> dbpedia-owl:postalCode
-* Latitude -> vcard:latitude
-* Longitude -> vcard:longitude
+* Latitude -> geo:lat
+* Longitude -> geo:long
 
 * Phone -> foaf:phone
-* Website -> dbpedia-owl:Website
-* Email -> vcard:email
+* Website -> foaf:homepage
+* Email -> foaf:email
 
 
 **Namespaces**
@@ -27,3 +27,4 @@
 * DBPEDIA-OWL
 * FOAF
 * VCARD
+* GEO

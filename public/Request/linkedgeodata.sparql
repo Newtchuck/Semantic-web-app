@@ -1,0 +1,10 @@
+PREFIX bif: <http://www.openlinksw.com/schemas/bif>
+
+SELECT ?name ?pgeo
+WHERE
+{
+  <http://dbpedia.org/page/North_Devon_District_Hospital> geo:geometry ?geo .
+  ?p a <http://linkedgeodata.org/ontology/Pharmacy> .
+  ?p geo:geometry ?pgeo .
+  FILTER(bif:st_intersects(?geo, ?pgeo, 5))
+}
