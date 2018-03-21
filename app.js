@@ -132,7 +132,7 @@ app.get('/hospital/:id', function(req, res) {
 		.then(({ body }) => {
 			let result = body === null ? {} : body.results.bindings[0];
 			hospitalTarget = result.name.value.split(" ").join("_").split("(").join("").split(")").join("");
-			//hospitalTarget = "Leicester_Royal_Infirmary"
+			hospitalTarget = "Leicester_Royal_Infirmary"
 			dbpediaEP
 				.selectQuery(
 					"PREFIX dbo: <http://dbpedia.org/ontology/>\n" +
