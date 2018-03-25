@@ -3,8 +3,13 @@ extends layout
 block content
     - var unknown="(value not found)"
     .mdl-grid
+        .mdl-textfield.mdl-js-textfield.mdl-textfield--expandable
+            label.mdl-button.mdl-js-button.mdl-button--icon(for="sample6")
+                i.material-icons= "search"
+            .mdl-textfield__expandable-holder
+                input.mdl-textfield__input(type="text", id="sample6" onkeyup("filterThis"))
+                label.mdl-textfield__label(for="sample-expandable">Expandable)= Input
         .mdl-cell.mdl-cell--12-col
-            h1.mytitle #{title}
             div.card-container
                 for item in results
                     - var Name= (item.name.value.length >= 17 ? item.name.value.substring(0, 17) + "..." : item.name.value);

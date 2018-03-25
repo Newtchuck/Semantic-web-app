@@ -136,12 +136,31 @@ app.get('/hospital/:id', function(req, res) {
 	     	const result = body === null ? {} : body.results.bindings[0];
 	     	data.hospital = result.name.value.split(" ").join("_").split("(").join("").split(")").join("");
 	     	dbpediaEP
-				.selectQuery(queries[2])
+				.selectQuery(	"PREFIX dbo: <http://dbpedia.org/ontology/>\n" +
+					"PREFIX dbr: <http://dbpedia.org/resource/>\n" +
+					"PREFIX geo: <https://www.w3.org/2003/01/geo/>\n" +
+					"PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n" +
+					"PREFIX dbp: <http://dbpedia.org/property/>\n" +
+					"\n" +
+					"SELECT *\n" +
+					"WHERE {\n" +
+					"    dbr:" + data.hospital + "  dbo:abstract ?abstract .\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "  dbo:thumbnail ?tn }.\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "  dbp:caption ?caption } .\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "  dbo:bedCount ?bed } .\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "  dbo:address ?ad } .\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "  foaf:homepage ?page } .\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "  geo:geometry ?geo } .\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "   dbp:location ?location } .\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "  dbp:healthcare ?hc } .\n" +
+					"    dbr:" + data.hospital + "   dbp:type ?type .\n" +
+					"    OPTIONAL { dbr:" + data.hospital + "   dbo:country ?country }\n" +
+					"}",)
 				.then(function(res) {
 					return res.json();
 				})
 				.then(function(dbpRes) {
-					const dbpedia = dbpRes.results.bindings.length === 0 ? "empty" : dbpRes.results.bindings;
+					const dbpedia = dbpRes.results.bindings.length === 0 ? "empty" : dbpRes.results.bindings[0];
 					const url = "http://dbpedia.org/page/" + data.hospital;
 					data.lon = result.geolon.value;
 					data.lat = result.geolat.value;
@@ -152,7 +171,7 @@ app.get('/hospital/:id', function(req, res) {
 						})
 						.then(function(lgdRes) {
 							const linkedgeodata = lgdRes.results.bindings.length === 0 ? [] : lgdRes.results.bindings;
-							res.render("hospital", {title: "More details about:", result: result, dbpedia: dbpedia[0], linkedG: linkedgeodata, url: url})
+							res.render("hospital", {title: "More details about:", result: result, dbpedia: dbpedia, linkedG: linkedgeodata, url: url})
 						})
 						.catch(err => res.render('error', {error: err}));
 				})
