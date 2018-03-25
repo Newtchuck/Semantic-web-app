@@ -11,9 +11,10 @@ html
         link(rel='stylesheet', href='/stylesheets/material.min.css')
         link(rel='stylesheet', href="/static/style.css")
         link(rel='stylesheet', href='https://fonts.googleapis.com/icon?family=Material+Icons')
+        link(rel='stylesheet', href='https://code.getmdl.io/1.3.0/material.indigo-light_blue.min.css')
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
   body
-    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header.mdl-hospital
       include header
 
       main.mdl-layout__content
@@ -22,3 +23,5 @@ html
         include footer
 
   script(src="/javascripts/cards.js")
+  script(src="https://code.getmdl.io/1.3.0/material.min.js")
+  script(src='https://www.bing.com/api/maps/mapcontrol?key=AvWX5S4O20wprbLukE6AyPJuwSB2Dwunx3LBWBArQCBSfYD5Ibpzk0NFNjY1ue9f&callback=myMap' async defer)

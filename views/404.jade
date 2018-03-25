@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    style(type='text/css').
+        .pre-style {
+            white-space: pre-line;
+        }
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+        main.mdl-layout__content
+            .mdl-layout__tab-panel
+            section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+                    .mdl-card.mdl-cell.mdl-cell--12-col-desktop.mdl-cell--6-col-tablet.mdl-cell--4-col-phone
+                        .mdl-card__supporting-text
+                            h4= "404. That is an error."
+                            h5= "We're sorry. The page you try to access does not exist."
+                            pre.pre-style=  url + " not found."
+                    .mdl-card__actions.mdl-color--primary-contrast
+                        a.mdl-button.mdl-color-text--white.mdl-color--primary(href='localhost:3000/') Home

@@ -1,17 +1,24 @@
 extends layout
--var unknown="(value not found)"
 
 block content
+    - var unknown="(value not found)"
     .mdl-grid
         .mdl-cell.mdl-cell--12-col
             h1.mytitle #{title}
-            div.container
-                div.list
-                    for item in results
-                        div.card.ripple.mdl-card__title
-                            h5.mdl-card__title= "Information about : " + (item.county.value !== "" ? item.county.value : unknown)
-                            p.mdl-card__supporting-text= "Unique " + item.county.value + "'s code: " + item.code.value
-                            p.mdl-card__supporting-text= "Email address: " + (item.mail !== undefined ? item.mail.value : unknown)
-                            p.mdl-card__supporting-text= "Website: " + (item.homepage !== undefined ? item.homepage.value : unknown)
-                            div.mdl-card__actions.mdl-card--border.mybutton
-                                a.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(href="http://localhost:3000/hospital/" + item.code.value) Get more
+            div.card-container
+                for item in results
+                    - var Name= (item.name.value.length >= 17 ? item.name.value.substring(0, 17) + "..." : item.name.value);
+                    - var County= (item.county !== undefined ? item.county.value : unknown);
+                    - var HCode= item.code.value;
+                    - var Website= (item.homepage !== undefined ? item.homepage.value : unknown);
+                    - var Email=(item.email !== undefined ? item.email.value : unknown);
+                    div.card
+                        div.card-image
+                        div.card-info
+                            div.card-title= Name
+                            div.card-detail= "The " + item.name.value + "'s building is located at " + County + "(code " + HCode + ").\nYou can contact them by:"
+                                ul
+                                    li: p="email: " + Email
+                                    li: p="their website:" + Website
+                        div.card-social
+                            ul: li: a.nostyle(href="http://localhost:3000/hospital/" + HCode) More information

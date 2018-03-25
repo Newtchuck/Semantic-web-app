@@ -1,6 +1,17 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+    style(type='text/css').
+        .pre-style {
+            white-space: pre-line;
+        }
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+        main.mdl-layout__content
+                section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+                    .mdl-card.mdl-cell.mdl-cell--12-col-desktop.mdl-cell--6-col-tablet.mdl-cell--4-col-phone
+                        .mdl-card__supporting-text
+                            h4= "We're sorry. Something happened."
+                            h5= "Please try to reload the page. If there's still an error, contact the developpers and give them this message:"
+                            pre.pre-style= error.stack
+                    .mdl-card__actions.mdl-color--primary-contrast
+                        a.mdl-button.mdl-color-text--white.mdl-color--primary(href='localhost:3000/') Reload the page

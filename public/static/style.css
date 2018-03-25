@@ -1,24 +1,201 @@
-.mdl-navigation__link:hover {
-  background-color: #104ac9;
+html,
+body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 0;
 }
-.mdl-mini-footer__link-list li a:hover {
-  color: #bbb;
+.mdl-hospital .mdl-layout__header-row {
+  padding-left: 40px;
+}
+.mdl-hospital .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
+  font-size: inherit;
+}
+.mdl-hospital .mdl-layout__tab-bar-button {
+  display: none;
+}
+.mdl-hospital .mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button {
+  display: none;
+}
+.mdl-hospital .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar,
+.mdl-hospital .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar-container {
+  overflow: visible;
+}
+.mdl-hospital .mdl-layout__tab-bar-container {
+  height: 64px;
+}
+.mdl-hospital .mdl-layout__tab-bar {
+  padding: 0;
+  padding-left: 16px;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}
+.mdl-hospital .mdl-layout__tab-bar .mdl-layout__tab {
+  height: 64px;
+  line-height: 64px;
+}
+.mdl-hospital .mdl-layout__tab-bar .mdl-layout__tab.is-active::after {
+  background-color: white;
+  height: 4px;
+}
+.mdl-hospital main > .mdl-layout__tab-panel {
+  padding: 8px;
+  padding-top: 48px;
+}
+.mdl-hospital .mdl-card {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.mdl-hospital .mdl-card > * {
+  height: auto;
+}
+.mdl-hospital .mdl-card .mdl-card__supporting-text {
+  margin: 40px;
+  flex-grow: 1;
+  padding: 0;
+  color: inherit;
+  width: calc(100% - 80px);
+}
+.mdl-hospital.mdl-hospital .mdl-card__supporting-text h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.mdl-hospital .mdl-card__actions {
+  margin: 0;
+  padding: 4px 40px;
+  color: inherit;
+}
+.mdl-hospital .mdl-card__actions a {
+  color: #00BCD4;
+  margin: 0;
+}
+.mdl-hospital .mdl-card__actions a:hover,
+.mdl-hospital .mdl-card__actions a:active {
+  color: inherit;
+  background-color: white;
+}
+.mdl-hospital .mdl-card__supporting-text + .mdl-card__actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.mdl-hospital #add {
+  position: absolute;
+  right: 40px;
+  top: 36px;
+  z-index: 999;
+}
+.mdl-hospital .mdl-layout__content section:not(:last-of-type) {
+  position: relative;
+  margin-bottom: 48px;
+}
+.mdl-hospital section.section--center {
+  max-width: 860px;
+}
+.mdl-hospital #features section.section--center {
+  max-width: 620px;
+}
+.mdl-hospital section > header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mdl-hospital section > .section__play-btn {
+  min-height: 200px;
+}
+.mdl-hospital section > header > .material-icons {
+  font-size: 3rem;
+}
+.mdl-hospital section > button {
+  position: absolute;
+  z-index: 99;
+  top: 8px;
+  right: 8px;
+}
+.mdl-hospital section .section__circle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 0;
+  flex-shrink: 1;
+}
+.mdl-hospital section .section__text {
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding-top: 8px;
+}
+.mdl-hospital section .section__text h5 {
+  font-size: inherit;
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+.mdl-hospital section .section__text a {
+  text-decoration: none;
+}
+.mdl-hospital section .section__circle-container > .section__circle-container__circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  margin: 8px 0;
+}
+.mdl-hospital section.section--footer .section__circle--big {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin: 8px 32px;
+}
+.mdl-hospital .is-small-screen section.section--footer .section__circle--big {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin: 8px 16px;
+}
+.mdl-hospital section.section--footer {
+  padding: 64px 0;
+  margin: 0 -8px -8px -8px;
+}
+.mdl-hospital section.section--center .section__text:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+}
+.mdl-hospital .mdl-card .mdl-card__supporting-text > h3:first-child {
+  margin-bottom: 24px;
+}
+.mdl-hospital .mdl-layout__tab-panel:not(#overview) {
+  background-color: transparent;
+}
+.mdl-hospital #features section {
+  margin-bottom: 72px;
+}
+.mdl-hospital #features h4,
+#features h5 {
+  margin-bottom: 16px;
+}
+.mdl-hospital .toc {
+  border-left: 4px solid #C1EEF4;
+  margin: 24px;
+  padding: 0;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.mdl-hospital .toc h4 {
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+.mdl-hospital .toc a {
+  color: #4DD0E1;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 28px;
+  display: block;
+}
+.mdl-hospital .mdl-menu__container {
+  z-index: 99;
 }
 body {
-  background: #efefef;
+  background: rgba(0, 0, 255, 0.1);
 }
 .nostyle {
   text-decoration: none;
-}
-.containerCard {
-  width: 100%;
-  height: 100%;
-}
-.mybutton {
-  display: none;
-}
-.mytitle {
-  text-align: center;
 }
 .myfooter {
   position: fixed;
@@ -27,49 +204,157 @@ body {
   width: 100%;
   overflow: hidden;
 }
-.list {
-  margin: 30px auto;
-  max-width: 720px;
-}
-.list .card {
-  background: #fff;
-  cursor: pointer;
-  box-shadow: 0 1px 4px 0 #666;
-  height: 125px;
-  transition: all 0.3s ease;
-}
-.list .card:hover {
-  background-color: #fafafa;
-}
-.list .card.active {
-  margin: 30px -30px;
-  border: 0;
-  height: 250px;
+.card-container {
   position: relative;
-  z-index: 1;
-}
-/* ink effect on buttons */
-.ripple {
-  position: relative;
+  flex-wrap: wrap;
   overflow: hidden;
+  background: rgba(0, 0, 255, 0.15);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.ripple .ink {
-  display: block;
+.card {
+  min-width: 275px;
+  width: 275px;
+  position: relative;
+  margin: 15px 15px;
+  height: 350px;
+  border-radius: 7px;
+  background-size: cover;
+  background: rgba(0, 0, 0, 0.58);
+  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.57);
+  transition: 0.2s all linear;
+  border: 1px solid #808080;
+  box-sizing: border-box;
+}
+.card .card-social {
   position: absolute;
-  background-color: #ccc;
-  border-radius: 100%;
-  transform: scale(0);
+  height: 75px;
+  width: 100%;
+  background: red;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: rgba(0, 0, 0, 0.54);
+  box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.55);
+  top: 275px;
 }
-.ripple .ink.animate {
-  -webkit-animation: ripple 0.65s linear;
-  -moz-animation: ripple 0.65s linear;
-  -o-animation: ripple 0.65s linear;
-  animation: ripple 0.65s linear;
+.card .card-social ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
 }
-/* ink animation effect */
-@keyframes ripple {
-  100% {
-    opacity: 0;
-    transform: scale(3);
-  }
+.card .card-social ul li {
+  height: 100%;
+  text-align: center;
+  line-height: 75px;
+  font-size: 1.5em;
+  color: #ffffff;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.55);
+}
+.card .card-social ul li:hover {
+  text-shadow: 7px 7px 5px rgba(0, 0, 0, 0.53);
+  transition: all 0.1s linear;
+}
+.card .card-image {
+  width: 100%;
+  height: 275px;
+  position: relative;
+  background-image: url('https://d13yacurqjgara.cloudfront.net/users/150724/screenshots/2211976/365_the_end_1x.png');
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.card .card-info {
+  position: relative;
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  top: -265px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  color: #ffffff;
+}
+.card .card-info .card-title {
+  line-height: 35px;
+  height: 35px;
+  position: relative;
+  top: 0;
+  font-size: 25px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.54);
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.57);
+}
+.card .card-info .card-detail {
+  line-height: 1.5em;
+  font-size: 1em;
+  height: 220px;
+  background: rgba(0, 0, 0, 0.54);
+  position: relative;
+  top: 5px;
+  padding: 5px 20px 0px 20px;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center top;
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.57);
+}
+.card:hover {
+  box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.57);
+}
+.card:hover .card-info .card-title {
+  box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.57);
+  transition: 0.3s all linear;
+}
+.card:hover .card-info .card-detail {
+  opacity: 1;
+  box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.57);
+  transition: 0.35s all linear;
+  transition-delay: 0.1s;
+  transform: scaleY(1);
+}
+.card:nth-of-type(14n+1) .card-image {
+  background-image: url('https://d13yacurqjgara.cloudfront.net/users/150724/screenshots/2164720/337_writing_blog_post_1x.png');
+}
+.card:nth-of-type(14n+2) .card-image {
+  background-image: url('https://d13yacurqjgara.cloudfront.net/users/150724/screenshots/2377046/kaylo_ren_lighsaber_800x600_1x.png');
+}
+.card:nth-of-type(14n+3) .card-image {
+  background-image: url('https://d13yacurqjgara.cloudfront.net/users/150724/screenshots/2203790/362_chasing_dreams_1x.png');
+}
+.card:nth-of-type(14n+4) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/4354255/swan_02_1x.png');
+}
+.card:nth-of-type(14n+5) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/4350772/lamp_bed1_1x.png');
+}
+.card:nth-of-type(14n+6) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/4047865/sunset_1x.png');
+}
+.card:nth-of-type(14n+7) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/4009796/_itsukushima_shrine_1x.png');
+}
+.card:nth-of-type(14n+8) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/3895770/owl_1x.png');
+}
+.card:nth-of-type(14n+9) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/2126675/311_end_is_near_1x.png');
+}
+.card:nth-of-type(14n+10) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/2112738/300_landing_1x.png');
+}
+.card:nth-of-type(14n+11) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/2093715/286_roller_coaster_1x.png');
+}
+.card:nth-of-type(14n+12) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/2011676/228_golden_gate_1x.png');
+}
+.card:nth-of-type(14n+13) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/1855564/121_octopus_1x.png');
+}
+.card:nth-of-type(14n+14) .card-image {
+  background-image: url('https://cdn.dribbble.com/users/150724/screenshots/1809164/084_jellyfish_1x.png');
 }

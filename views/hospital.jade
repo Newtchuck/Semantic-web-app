@@ -1,30 +1,131 @@
-extends layout
--var unknown="(value not found)"
+extend layout
 
 block content
-    .mdl-grid
-        .mdl-cell.mdl-cell--12-col
-            h1.mytitle #{title + " " + result.name.value}
-            div.containerCard
-                    div.card.ripple.mdl-card__title
-                        h5.mdl-card__title= "Name:" + (result.name.value !== "" ? result.name.value : unknown)
-                        p.mdl-card__supporting-text= "Code:" + (result.code !== "" ? result.code.value : unknown)
-                        p.mdl-card__supporting-text= "ID: " + (result.id  !== "" ? result.id.value : unknown)
-                        p.mdl-card__supporting-text= "Name: " + (result.name !== "" ? result.name.value : unknown)
-                        p.mdl-card__supporting-text= "Department: " + (result.department !== "" ? result.department.value : unknown)
-                        p.mdl-card__supporting-text= "City:" + (result.city !== "" ? result.city.value : unknown)
-                        p.mdl-card__supporting-text= "Mail: " + (result.mail !== "" ? result.mail.value : unknown)
-                        p.mdl-card__supporting-text= "Phone: " + (result.phone !== "" ? result.phone.value : unknown)
-                        p.mdl-card__supporting-text= "Website: " + (result.website !== "" ? result.website.value : unknown)
-                        p.mdl-card__supporting-text= "PostCode: " + (result.addrcode !== "" ? result.addrcode.value : unknown)
-                        p.mdl-card__supporting-text= "County:" + (result.addrcounty !== "" ? result.addrcounty.value : unknown)
-                        p.mdl-card__supporting-text= "Lat: " + (result.geolat !== "" ? result.geolat.value : unknown)
-                        p.mdl-card__supporting-text= "Lon: " + (result.geolon !== "" ? result.geolon.value : unknown)
-                    div.card.ripple.mdl-card__title
-                        h5.mdl-card__title= "More data from dbpedia: " + (dbpedia !== "empty" ? "Available" : "Unknown")
-                        if (dbpedia !== "empty")
-                            span= "Abstract:" + (dbpedia.abstract !== "" ? dbpedia.abstract.value : unknown)
-                            span= "Beds:" + (dbpedia.bed !== "" ? dbpedia.bed.value : unknown)
-                            span= "Page:" + (dbpedia.page !== "" ? dbpedia.page.value : unknown)
+    - var unknown= " (value not found)"
+    - function getValue(v) { return v !== "" ? v : unknown}
+    style(type="text/css").
+        .mine {
+            background: url(https://cdn.dribbble.com/users/150724/screenshots/4345042/dribbble1_1x.png) center center;
+            background-size: cover;
+        }
+        .map {
+            position: static !important;
+            height: 215px;
+        }
+        .section--center {
+            max-width: 1200px !important;
+        }
+        .allowBigMap {
+            height: 430px;
+        }
 
+    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+        header.mdl-layout__header.mdl-layout__header--scroll.mdl-color--primary
+            .mdl-layout__tab-bar.mdl-js-ripple-effect.mdl-color--primary
+                a.mdl-layout__tab.is-active(href='#overview') Overview
+                a.mdl-layout__tab(href='#abstract') Abstract
+                a.mdl-layout__tab(href='#location') Location
+                a.mdl-layout__tab(href='#faq') FAQ
+        main.mdl-layout__content
+            // Hospital Overview
+            #overview.mdl-layout__tab-panel.is-active
+                section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+                    header.section__play-btn.mdl-cell.mdl-cell--4-col-desktop.mdl-cell--2-col-tablet.mdl-cell--4-col-phone.mdl-color--teal-100.mdl-color-text--white.mine
+                    .mdl-card.mdl-cell.mdl-cell--8-col-desktop.mdl-cell--3-col-tablet.mdl-cell--2-col-phone
+                        .mdl-card__supporting-text
+                            - var ID= getValue(result.id.value);
+                            - var Name= getValue(result.name.value);
+                            - var Department= getValue(result.department.value)
+                            - var City= getValue(result.city.value)
+                            - var County= getValue(result.addrcounty.value)
+                            - var Email= getValue(result.mail.value)
+                            - var Phone= getValue(result.phone.value)
+                            - var Website= getValue(result.website.value)
+                            - var PostalCode= getValue(result.addrcode.value)
+                            h4= Name + " (n°" + ID + ")"
+                            table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+                                thead
+                                    tr
+                                        th.mdl-data-table__cell--non-numeric= "Department"
+                                        th.mdl-data-table__cell--non-numeric= "County"
+                                        th.mdl-data-table__cell--non-numeric= "Location"
+                                tbody
+                                    tr
+                                        td.mdl-data-table__cell--non-numeric= Department
+                                        td.mdl-data-table__cell--non-numeric= County
+                                        td.mdl-data-table__cell--non-numeric= PostalCode + ": " + City
+                            br
+                            br
+                            h4= "Contact them !"
+                            table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+                                thead
+                                    tr
+                                        th.mdl-data-table__cell--non-numeric= "Phone"
+                                        th.mdl-data-table__cell--non-numeric= "Email"
+                                        th.mdl-data-table__cell--non-numeric= "Website"
+                                tbody
+                                    tr
+                                        td.mdl-data-table__cell--non-numeric= Phone
+                                        td.mdl-data-table__cell--non-numeric= Email
+                                        td.mdl-data-table__cell--non-numeric= Website
 
+                    .mdl-card__actions
+                        a.mdl-button.mdl-color--primary.mdl-color-text--white(href='http://dbpedia.org') DBpedia.org
+
+            // Hospital Abstract from DBPedia
+            #abstract.mdl-layout__tab-panel
+                section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+                    .mdl-card.mdl-cell.mdl-cell--12-col
+                        .mdl-card__supporting-text
+                            h4= "Abstract from DBPedia.org"
+                            p= dbpedia.abstract !== undefined ? dbpedia.abstract.value : "No abstract found on " + url + "."
+
+            // Hospital location thanks to BingMap
+            #location.mdl-layout__tab-panel.allowBigMap
+                section.section--center.mdl-grid.mdl-grid--no-spacing.mdl-shadow--2dp
+                    h4= Name + "'s location in " + City + "'s city"
+                    .mdl-card.mdl-cell.mdl-cell--12-col
+                        .mdl-card__supporting-text
+                            #microsoftMap.map.allowBigMap
+                            - var myDatas= []
+                            for elem in linkedG
+                                -myDatas.push({l: elem.l.value, lat: elem.lat.value, lon: elem.lon.value})
+                            script.
+                                var amnetys = []
+                                function myMap() {
+                                    var map = new Microsoft.Maps.Map(document.getElementById('microsoftMap'), {
+                                        center:    new Microsoft.Maps.Location(#{result.geolat.value}, #{result.geolon.value}),
+                                        mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+                                        zoom:      13
+                                    });
+
+                                    map.entities.push(new Microsoft.Maps.Pushpin(map.getCenter(), {
+                                        text: "A",
+                                        title: "Hospital",
+                                        subTitle: "#{result.name.value}"
+                                    }));
+
+                                    const labels = "BCDEFGHIJKLMNOPQRSTUVWXYZ";
+                                    if (amnetys.length !== 0) {
+                                        let inc = -1;
+                                        amnetys.forEach(function(item) {
+                                            map.entities.push(new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(item.lat, item.lon), {
+                                                    text:     labels[++inc],
+                                                    title:    "Amnesty",
+                                                    subTitle: item.l
+                                                }
+                                            ));
+                                        });
+                                    }
+                                }
+                            each amnesty in linkedG
+                                script.
+                                    amnetys.push({
+                                        l: "#{amnesty.l.value}",
+                                        lat: #{amnesty.lat.value},
+                                        lon: #{amnesty.lon.value}
+                                    })
+            // Stuff
+            #faq.mdl-layout__tab-panel
+                section.section--center.mdl-grid.mdl-grid--no-spacing
+                    h1="A few words about our work"
